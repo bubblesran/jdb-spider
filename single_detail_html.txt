@@ -1,0 +1,68 @@
+<!-- Template Area Start-->
+
+<article class="col-md-10 col-md-offset-1 jobad-content ad-y-option-bdc01" itemscope itemtype="http://schema.org/JobPosting">
+<meta itemprop="specialCommitments" content="VeteranCommit" />
+<section class="jobad-body">
+<div class="jobad-body-base row">
+<div class="jobad-primary col-md-8">
+<div class="jobad-primary-box jobad-primary-general">
+<div class="primary-general-box general-posgp"> 
+<h1 class="general-pos ad-y-auto-txt2" itemprop="title">Assistant Data Analyst&#47; Assistant Business Analyst</h1> 
+<h2 class="jobad-header-company ad-y-auto-txt1" itemprop="hiringOrganization">         STA Pacific Limited        </h2>
+<h3  class="general-loc loc-local"  itemprop="jobLocation"><span>          Not Specified         </span></h3>
+</div>
+<div class="primary-general-box general-data">
+<p class="data-timestamp" itemprop="datePosted" title="6/15/2017 4:01:19 AM">15-Jun-17        </p>
+<div class="data-ref-wrap ref-wrap-1">
+<p class="data-ref ref-jobsdb"><em>jobsDB ref: </em>          JHK100003005353639         </p>
+</div>
+<div class="data-ref-wrap ref-wrap-2">
+<p class="data-ref ref-employer"></p>
+</div>
+</div>
+</div>
+<div itemprop="responsibilities" class="jobad-primary-details">
+<p style="text-align: justify; line-height: normal;">
+<span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: black;">Our client is a large enterprise firm. With their current expanding, they are now looking for high caliber candidates to joint their business analyst team.</span></p>
+<p style="text-align: justify; line-height: normal;"><span style="font-size: 9.0pt; font-family: 'Arial',sans-serif; color: black;">&nbsp;</span></p>
+<p style="text-align: justify; line-height: normal;"><strong><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: black;">Responsibilities:</span></strong></p>
+<ul>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Conduct business performance analysis for budget planning</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Prepare and analyze reports&nbsp;which summarize&nbsp;and forecast &nbsp;business&nbsp;activity based on internal and external data</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Conduct data analysis and ad hoc reports</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Manage database integration and data mapping</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Provide reports for management team</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Prepare sales performance reports and commission scheme planning</span></li>
+</ul>
+<p style="line-height: normal;"><span style="font-size: 9.0pt; font-family: 'Arial',sans-serif; color: black;">&nbsp;</span></p>
+<p style="line-height: normal;"><strong><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: black;">Requirements:</span></strong></p>
+<ul>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Degree in Business Administration / Statistics /IT or related discipline&nbsp;</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Minimum 1 years of relevant experience&nbsp;in data analysis</span><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">, predictive modeling</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Proficient in</span><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;"> MS Excel VBA, Pivot Table, Access, SQL data base</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Experienced in project delivery and requirement collecting will be a plus</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Good sense of business acumen</span></li>
+<li style="color: black; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif;">Excellent command of both verbal and written English and Chinese</span></li>
+</ul>
+<p style="line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: black;">&nbsp;</span></p>
+</div>
+<div class="jobad-primary-box jobad-primary-tool-asst">
+<div class="primary-tool-asst">
+<div class="primary-tool-hint">
+<p>                      jobsDB will send your application for review directly to          </br>           <b class="apply-com-name" itemprop="hiringOrganization">           STA Pacific Limited          </b></p>
+</div>
+</div>
+</div>
+<div class="jobad-primary-box jobad-primary-meta">
+<div class="primary-meta-box row meta-group">
+<div class="primary-meta-box row meta-lv">
+<h3 class="meta-head col-xs-3">Career Level</h3>
+<p class="meta-item primary-meta-lv col-xs-9">          <span>           <b class="primary-meta-lv">            Entry Level           </b>          </span>         </p>
+</div>
+<div class="primary-meta-box row meta-exp">         <h3 class="meta-head col-xs-3">Yr(s) of Exp</h3>         <p class="meta-item primary-meta-exp col-xs-9">          <span>           <b itemprop="experienceRequirements" class="primary-meta-exp">            1 year experience           </b>          </span>         </p>        </div>
+<div class="primary-meta-box row meta-edu">         <h3 class="meta-head col-xs-3">Qualification</h3>         <p class="meta-item primary-meta-edu col-xs-9">          <span itemprop="educationRequirements">           Non-Degree Tertiary          </span>         </p>        </div>
+<div class="primary-meta-box row meta-industry">         <h3 class="meta-head col-xs-3">Company Industry</h3>         <p itemprop="industry" class="meta-link col-xs-9">          <a href="http://hk.jobsdb.com/hk/industry/human-resources-management-consultancy/1?JSSRC=JDBI">Human Resources Management / Consultancy</a>         </p>        </div>
+<div class="primary-meta-box row meta-jobfunction">         <h6 class="meta-head col-xs-3">Job Function</h6>         <p class="meta-link col-xs-9">          <a href="/hk/jobs/professional-services/1?JSSRC=JDBF">Professional Services</a> &gt; <a href="/hk/job-list/professional-services/business-analysis-data-analysis/1?JSSRC=JDBF">Business Analysis &#47; Data Analysis</a><br /><a href="/hk/jobs/professional-services/1?JSSRC=JDBF">Professional Services</a> &gt; <a href="/hk/job-list/professional-services/business-consultancy/1?JSSRC=JDBF">Business Consultancy</a>         </p>        </div>
+<div class="primary-meta-box row meta-salary">         <h3 class="meta-head col-xs-3">Salary negotiable</h3>         <p itemprop="baseSalary" class="meta-item primary-meta-salary col-xs-9">          <span title="The salary provided by this employer matches your criteria. More salary information will be discussed during the hiring process." id="salaryTooltip">           Salary provided                      <ins class="primary-meta-salary-tooltip-trigger" id="salaryTooltipIcon"></ins>                     </span>         </p>        </div>
+<div class="primary-meta-box row meta-employmenttype">         <h3 itemprop="employmentType" class="meta-head col-xs-3">Employment Type</h3>         <p class="meta-item col-xs-9">          Full Time, Permanent         </p>        </div>
+<div class="primary-meta-box row meta-benefit">         <h3 class="meta-head col-xs-3">Benefits</h3>         <div class="meta-items col-xs-9">          <p class="benefit-dental-insurance meta-benefit-item col-xs-6"><span itemprop="jobBenefits">Dental insurance</span></p><p class="benefit-education-allowance meta-benefit-item col-xs-6"><span itemprop="jobBenefits">Education allowance</span></p><p class="benefit-five-day-work-week meta-benefit-item col-xs-6"><span itemprop="jobBenefits">Five-day work week</span></p><p class="benefit-life-insurance meta-benefit-item col-xs-6"><span itemprop="jobBenefits">Life insurance</span></p><p class="benefit-medical-insurance meta-benefit-item col-xs-6"><span itemprop="jobBenefits">Medical insurance</span></p><p class="benefit-performance-bonus meta-benefit-item col-xs-6"><span itemprop="jobBenefits">Performance bonus</span></p>         </div>        </div></div></div></div>
