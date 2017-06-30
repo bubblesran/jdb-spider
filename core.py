@@ -2,6 +2,8 @@
 
 from bs4 import BeautifulSoup
 import model
+from model import quickinfo
+from model import detailinfo
 import misc
 from misc import ifttt_msg
 import time
@@ -19,34 +21,33 @@ def GetQuickinfoList(keywords):
 	for keyword in keywords:
 		try:
 			get_lists_perword(keyword)
-			logging.info(keyword + "Done")
+			logging.info(keyword + "   Done")
 		except Exception as e:
 			logging.error(e)
-			logging.error(keyword + "Fail")
+			logging.error(keyword + "   Fail")
 			pass
 	endtime = datetime.datetime.now()
 	logging.info("Run time: " + str(endtime - starttime))
 
 def GetDetailList(linklist):
-	logging.info("Get House Infomation")
+	logging.info("Get Detail Infomation")
 	starttime = datetime.datetime.now()
 	for link in linklist:
 		try:
 			get_detail_perlink(link)
-			logging.info(link + "Done")
+			logging.info(link + "   Done")
 		except Exception as e:
 			logging.error(e)
-			logging.error(link + "Fail")
-			pass
+			logging.error(link + "   Fail")
+			continue
 	endtime = datetime.datetime.now()
 	logging.info("Run time: " + str(endtime - starttime))
 
 def get_lists_perword(keyword):
 	url = BASE_URL % (keyword, pg_no)
-	source_code = misc.get_source_code(url)
-	soup = BeautifulSoup(source_code, 'lxml')
-
 	total_pages = misc.get_total_pages(url)
+	print('The total pages number is: ', total_pages)
+	time.sleep(3)
 	
 	if total_pages == None:
 		row = model.quickinfo.select().count()
@@ -58,59 +59,112 @@ def get_lists_perword(keyword):
 		soup = BeautifulSoup(source_code, 'lxml')
 
 		itemList = soup.findAll("div", {"class":"result-sherlock-cell"})
-		i = 0
+		print('The items are: ', len(itemList))
 
 		for item in itemList: 
-			i = i + 1
 			info_dict = {}
 			try:
 				id = item.get('id')
-				info_dict.update({u'id':id})
+				info_dict.update({'id':id})
 
 				link_title = item.find("h3", {"class":"job-title"})
-				info_dict.update({u'title':link_title.get_text()})
-				info_dict.update({u'link':link_title.a.get('href')})
+				info_dict.update({'title':link_title.get_text()})
+				info_dict.update({'link':link_title.a.get('href')})
 
-				descriptions = item.find("li", {"class":"description"})
-				summary_list = [desc.get_text() for desc in descriptions]
-				summary = ' | '.join(summary_list)
-				info_dict.update({u'summary':summary})
-
-				date = item.find("div", {"class":"job-quickinfo"}).meta,get('content')
-				info_dict.update({u'postdate':date})
+				if item.find("li", {"itemprop":"description"}):
+					descriptions = item.findAll("li", {"itemprop":"description"})
+					summary_list = [desc.get_text() for desc in descriptions]
+					summary = ' | '.join(summary_list)
+					info_dict.update({'summary':summary})
+				else:
+					info_dict.update({'summary':'no description'})
 				
-				wage = item.find('p',{'class':'job-quickinfo-salary'}).get_text()
-				info_dict.update({u'salary':wage})
+				if item.find('p',{'class':'job-quickinfo-salary'}):
+					wage = item.find('p',{'class':'job-quickinfo-salary'}).get_text()
+					info_dict.update({'salary':wage})
+				else:
+					info_dict.update({'salary':'not specified'})
+				
+				date = item.find("div", {"class":"job-quickinfo"}).meta.get('content')
+				info_dict.update({'postdate':date})
+				print(info_dict)
+
 			except:
+#				print('There is no item found')
 				continue
-			# quickinfo insert into database
-			model.quickinfo.insert(**info_dict).upsert().execute()
-			time.sleep(5)
+			quickinfo.insert(**info_dict).upsert().execute()
+		time.sleep(5)
+
 
 def get_detail_perlink(link): 
 	url = link
 	source_code = misc.get_source_code(url)
 	soup = BeautifulSoup(source_code, 'lxml')
-
+	info_dict = {}
+	
 	try:
-		communitytitle = name.find("div", {"class":"title"})
-		info_dict.update({u'title':communitytitle.get_text().strip('\n')})
-		info_dict.update({u'link':communitytitle.a.get('href')})
-
-		district = name.find("a", {"class":"district"})
-		info_dict.update({u'district':district.get_text()})
-		bizcircle = name.find("a", {"class":"bizcircle"})
-		info_dict.update({u'bizcircle':bizcircle.get_text()})
-
-		tagList = name.find("div", {"class":"tagList"})
-		info_dict.update({u'tagList':tagList.get_text().strip('\n')})
+		ref_content = soup.find('p',{'class':'data-ref ref-jobsdb'}).get_text()
+		ref_pattern = r"JHK\d+"
+		ref = re.search(ref_pattern, ref_content).group()
+		info_dict.update({'ref':ref})
+		
+		title = soup.find('h1',{'itemprop':'title'}).get_text()
+		info_dict.update({'title':title})
+		
+		info_dict.update({'link':link})
+		
+		datePosted = soup.find('p',{'itemprop':'datePosted'}).get_text()
+		info_dict.update({'datePosted':datePosted})
+		
+		if soup.find('div',{'itemprop':'responsibilities'}):
+			resp = soup.find('div',{'itemprop':'responsibilities'})
+			resp_children = resp.findAll('li')
+			resp_list = [resp.get_text() for resp in resp_children]
+			responsibilities = ' | '.join(resp_list)
+			info_dict.update({'Responsibilities':responsibilities})
+		else:
+			info_dict.update({'Responsibilities':'not specified'})
+		
+		if soup.find('div',{'itemprop':'requirements'}):
+			req = soup.find('div',{'itemprop':'requirements'})
+			req_children = req.findAll('li')
+			req_list = [req.get_text() for req in req_children]
+			requirements = ' | '.join(req_list)
+			info_dict.update({'Requirements':requirements})
+		else:
+			info_dict.update({'Requirements':'not specified'})
+		
+		if soup.find('b',{'class':'primary-meta-lv'}):
+			level = soup.find('b',{'class':'primary-meta-lv'}).get_text()
+			info_dict.update({'CareerLevel':level})
+		else:
+			info_dict.update({'CareerLevel':'not specified'})
+		
+		if soup.find('b',{'class':'primary-meta-exp'}):
+			years = soup.find('b',{'class':'primary-meta-exp'}).get_text()
+			info_dict.update({'Exp':years})
+		else:
+			info_dict.update({'Exp':'not specified'})
+		
+		if soup.find('span',{'itemprop':'educationRequirements'}):
+			qualification = soup.find('span',{'itemprop':'educationRequirements'}).get_text()
+			info_dict.update({'Qualification':qualification})
+		else:
+			info_dict.update({'Qualification':'not specified'})
+		
+		if soup.find('span',{'id':'salaryTooltip'}):
+			salary = soup.find('span',{'id':'salaryTooltip'}).get_text()
+			info_dict.update({'salary':salary})
+		else:
+			info_dict.update({'salary':'not specified'})
 	except:
-		continue
-	# communityinfo insert into mysql
-	model.Community.insert(**info_dict).upsert().execute()
+		print('The item is not found')
+	
+	detailinfo.insert(**info_dict).upsert().execute()
 
 	time.sleep(5)
 
+# Not used in this section
 def check_block(soup):
 	if soup.title.string == "414 Request-URI Too Large":
 		logging.error("Lianjia block your ip, please verify captcha manually at lianjia.com")

@@ -10,7 +10,8 @@ def get_linklist():
 	return res
 
 if __name__=="__main__":
-	keywords = [u'data+analyst',u'business+analyst'] # only pinyin support
+#	keywords = [u'data+analyst',u'business+analyst'] # only pinyin support
+	keywords = [u'data+analyst']
 	model.database_init()
 	core.GetQuickinfoList(keywords) # Init,scrapy celllist and insert database; could run only 1st time
 	linklist = get_linklist() # Read celllist from database
