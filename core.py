@@ -5,7 +5,6 @@ import model
 from model import quickinfo
 from model import detailinfo
 import misc
-from misc import ifttt_msg
 import time
 import datetime
 import logging
@@ -87,7 +86,7 @@ def get_lists_perword(keyword):
 				
 				date = item.find("div", {"class":"job-quickinfo"}).meta.get('content')
 				info_dict.update({'postdate':date})
-				print(info_dict)
+#				print(info_dict)
 
 			except:
 #				print('There is no item found')

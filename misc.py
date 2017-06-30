@@ -9,6 +9,10 @@ from six.moves import urllib
 import socket
 import re
 import math
+#import logging
+import time
+
+#logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 hds=[{'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'},\
 	{'User-Agent':'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11'},\
@@ -27,32 +31,35 @@ hds=[{'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) 
 
 
 def get_source_code(url):
-	try:
-		result = requests.get(url, headers=hds[random.randint(0,len(hds)-1)])
-		#result = requests.get(url, headers=hds)
-		source_code = result.content
-	except Exception as e:
-		print (e)
-		return
+	i = 0
+	while i<10: #while loop if error raises, try 10 times
+		i += 1
+		try:
+			result = requests.get(url, headers=hds[random.randint(0,len(hds)-1)], timeout=(6,30))
+			#result = requests.get(url, headers=hds)
+			source_code = result.content
+			if source_code is not None:
+				break
+		except Exception as e:
+#			logging.error(e)
+			print(e)
+			time.sleep(3)
+			return
 	return source_code
+
 
 def get_total_pages(url):
 	source_code = get_source_code(url)
 	soup = BeautifulSoup(source_code, 'lxml')
 	try:
 		page_info = soup.head.title.get_text()
-	except AttributeError as e:
+	except Exception as e:
 		page_info = None
 	
 	pattern = r"\d+"
 	sum = int(re.search(pattern, page_info).group())
 	total_page = int(math.ceil(sum/50))
 	return total_page
-
-def ifttt_msg(message):
-	report={}
-	report['value1'] = message
-	requests.post("https://maker.ifttt.com/trigger/error_poped/with/key/ctU3vVMhpNmhZqs_FbzvxF",data=report)
 
 #===========proxy ip spider, we do not use now because it is not stable===========
 proxys_src = []
