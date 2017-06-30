@@ -32,5 +32,5 @@ class detailinfo(BaseModel):
 
 def database_init():
     database.connect()
-    database.create_tables([quickinfo, detailinfo])
+    database.create_tables([quickinfo, detailinfo],safe=True)
     database.close()
