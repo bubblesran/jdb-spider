@@ -10,7 +10,7 @@ class BaseModel(Model):
 		database = database # this model uses database jobsdb.db
 
 class quickinfo(BaseModel):
-	id         = CharField()
+	id         = CharField(primary_key=True)
 	title      = CharField()
 	link       = CharField()
 	summary    = CharField()
