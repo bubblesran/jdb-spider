@@ -4,7 +4,7 @@ import sqlite3 as sq
 import pandas as pd
 
 def quickid(c):
-	sql = ''' update quickinfo set id = replace(id, 'Row', 'JHK') where id like 'Row%' '''
+	sql = '''update quickinfo set id = replace(id, 'Row', 'JHK')'''
 	c.execute(sql)
 
 def opendb():
