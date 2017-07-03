@@ -3,6 +3,7 @@ import model
 from model import quickinfo
 import datetime
 import requests
+import dprocess
 
 def get_linklist():
 	res = []
@@ -18,11 +19,12 @@ def ifttt_msg(msg1, msg2):
 
 def main():
 	keywords = [u'data+analyst',u'business+analyst'] # only pinyin support
-#	keywords = [u'data+analyst']
 	model.database_init()
 	core.GetQuickinfoList(keywords) 
 	linklist = get_linklist() 
 	core.GetDetailList(linklist)
+	c = dprocess.opendb()
+	dprocess.quickid(c) #replace Row to JHK to make sure both tables have same id's
 	msg1 = 'Done.'
 	msg2 = 'Check the results.'
 #	ifttt_msg(msg1, msg2)
