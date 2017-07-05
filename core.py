@@ -86,6 +86,9 @@ def get_lists_perword(keyword):
 				
 				date = item.find("div", {"class":"job-quickinfo"}).meta.get('content')
 				info_dict.update({'postdate':date})
+				
+				label = keyword.replace('+',' ')
+				info_dict.update({'label':label})
 #				print(info_dict)
 
 			except:
@@ -96,7 +99,8 @@ def get_lists_perword(keyword):
 
 
 def get_detail_perlink(link): 
-	url = link
+	url = link[0]
+	label = link[1]
 	source_code = misc.get_source_code(url)
 	soup = BeautifulSoup(source_code, 'lxml')
 	info_dict = {}
@@ -156,6 +160,8 @@ def get_detail_perlink(link):
 			info_dict.update({'salary':salary})
 		else:
 			info_dict.update({'salary':'not specified'})
+		
+		info_dict.update({'label':label})
 	except:
 		print('The item is not found')
 	

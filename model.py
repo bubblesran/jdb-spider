@@ -16,6 +16,7 @@ class quickinfo(BaseModel):
 	summary    = CharField()
 	salary     = CharField()
 	postdate   = CharField()
+	label      = CharField()
 	updatetime = DateTimeField(default=datetime.datetime.now)
 
 class detailinfo(BaseModel):
@@ -29,8 +30,10 @@ class detailinfo(BaseModel):
 	Exp              = CharField()
 	Qualification    = CharField()
 	salary           = CharField()
+	label            = CharField()
 
 def database_init():
     database.connect()
-    database.create_tables([quickinfo, detailinfo],safe=True)
+#    database.create_tables([quickinfo, detailinfo],safe=True)
+    database.create_tables([quickinfo, detailinfo])
     database.close()
