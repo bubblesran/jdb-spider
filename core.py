@@ -34,10 +34,10 @@ def GetDetailList(linklist):
 	for link in linklist:
 		try:
 			get_detail_perlink(link)
-			logging.info(link + "   Done")
+			logging.info(link[0] + "   Done")
 		except Exception as e:
 			logging.error(e)
-			logging.error(link + "   Fail")
+			logging.error(link[0] + "   Fail")
 			continue
 	endtime = datetime.datetime.now()
 	logging.info("Run time: " + str(endtime - starttime))

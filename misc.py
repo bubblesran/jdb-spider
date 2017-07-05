@@ -30,7 +30,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) 
 
 
 
-def get_source_code(url):
+def get_source_code(url): # not sure if the while loop and exit strategy work well...
 	i = 0
 	while i<10: #while loop if error raises, try 10 times
 		i += 1
@@ -44,7 +44,7 @@ def get_source_code(url):
 #			logging.error(e)
 			print(e)
 			time.sleep(3)
-			return
+			continue
 	return source_code
 
 
