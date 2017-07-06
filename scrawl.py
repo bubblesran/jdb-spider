@@ -5,8 +5,12 @@ import model
 from model import quickinfo
 import datetime
 import requests
+import logging
 #import dprocess 
 #for daily routine work, the data process is not worked as expected yet. Better do it in another programme.
+
+#logger settings
+logging.basicConfig(filename='/usr/jdb-spider/dailylog.log', format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 def get_linklist():
 	res = []
@@ -22,11 +26,13 @@ def ifttt_msg(msg1, msg2):
 
 def main():
 	keywords = [u'data+scientist', u'data+analyst', u'business+analyst'] # only pinyin support
+	logging.info('Started')
 	model.database_init()
 	core.GetQuickinfoList(keywords) 
 	linklist = get_linklist()
 	core.GetDetailList(linklist)
-	c = dprocess.opendb()
+	logging.info('Finished')
+#	c = dprocess.opendb()
 #	dprocess.quickid(c) #replace Row to JHK to make sure both tables have same id's
 #	msg1 = 'Done.'
 #	msg2 = 'Check the results.'

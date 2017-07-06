@@ -9,7 +9,7 @@ from six.moves import urllib
 import socket
 import re
 import math
-#import logging
+import logging
 import time
 
 #logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -41,7 +41,7 @@ def get_source_code(url): # not sure if the while loop and exit strategy work we
 			if source_code is not None:
 				break
 		except Exception as e:
-#			logging.error(e)
+			logging.error(e)
 			print(e)
 			time.sleep(3)
 			continue
@@ -55,6 +55,7 @@ def get_total_pages(url):
 		page_info = soup.head.title.get_text()
 	except Exception as e:
 		page_info = None
+		logging.error(e)
 	
 	pattern = r"\d+"
 	sum = int(re.search(pattern, page_info).group())

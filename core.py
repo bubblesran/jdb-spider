@@ -10,7 +10,7 @@ import datetime
 import logging
 import re
 
-logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
+#logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 BASE_URL = u"http://hk.jobsdb.com/HK/en/Search/FindJobs?AD=30&Blind=1&Host=J&JobCat=1&JSRV=1&Key=%s&KeyOpt=COMPLEX&SearchFields=Positions%%2cCompanies&page=%d"
 pg_no = 0
 
@@ -46,6 +46,7 @@ def get_lists_perword(keyword):
 	url = BASE_URL % (keyword, pg_no)
 	total_pages = misc.get_total_pages(url)
 	print('The total pages number is: ', total_pages)
+	logging.info('The total pages number is: '+str(total_pages))
 	time.sleep(3)
 	
 	if total_pages == None:
@@ -59,6 +60,7 @@ def get_lists_perword(keyword):
 
 		itemList = soup.findAll("div", {"class":"result-sherlock-cell"})
 		print('The items are: ', len(itemList))
+		logging.info('The items are: '+str(len(itemList)))
 
 		for item in itemList: 
 			info_dict = {}
@@ -93,6 +95,7 @@ def get_lists_perword(keyword):
 
 			except:
 #				print('There is no item found')
+				logging.info('The item of searching results is not found')
 				continue
 			quickinfo.insert(**info_dict).upsert().execute()
 		time.sleep(5)
@@ -163,7 +166,8 @@ def get_detail_perlink(link):
 		
 		info_dict.update({'label':label})
 	except:
-		print('The item is not found')
+		print('The detail item is not found')
+		logging.info('The detail item is not found')
 	
 	detailinfo.insert(**info_dict).upsert().execute()
 
